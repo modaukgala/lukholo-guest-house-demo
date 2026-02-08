@@ -96,10 +96,10 @@ section + section{
 
 /* GREETING – FINAL, CLEAN, PREDICTABLE */
 .greeting{
-  font-size: 32px;                /* locked, no conflicts */
+  font-size: 84px;                /* locked, no conflicts */
   letter-spacing: 3px;
   text-transform: uppercase;
-  font-family: "Inter", Arial, sans-serif;
+  font-family: "Cormorant Garamond", serif;
   color: #ffffff;
   opacity: 0.9;
   transition: opacity 0.4s ease;

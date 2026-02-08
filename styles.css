@@ -416,8 +416,10 @@ section + section{
   }
 
   .greeting{
-    font-size: 22px; /* still readable on phone */
+    font-size: 36px; /* still readable on phone */
     letter-spacing: 2px;
+    text-transform: uppercase;
+    font-family: "Cormorant Garamond", serif;
   }
 }
 

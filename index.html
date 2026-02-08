@@ -194,6 +194,11 @@
             </label>
 
             <label>
+              Surname
+              <input type="text" name="Surname" required />
+            </label>
+
+            <label>
               Email Address
               <input type="email" name="Email" required />
             </label>
@@ -204,8 +209,18 @@
             </label>
 
             <label>
-              Preferred Dates
-              <input type="text" name="Dates" placeholder="e.g. 12–15 March" />
+             Check-in Date
+             <input type="date" name="Check-in Date" id="checkIn" required />
+            </label>
+
+            <label>
+             Check-out Date
+             <input type="date" name="Check-out Date" id="checkOut" required />
+            </label>
+
+            <label>
+             Duration (Nights)
+             <input type="text" name="Duration (Nights)" id="nights" readonly placeholder="0" />
             </label>
 
             <label>
@@ -271,6 +286,48 @@
     rotateGreeting();
     setInterval(rotateGreeting, 2500);
   </script>
+
+ <script>
+  const checkIn = document.getElementById("checkIn");
+  const checkOut = document.getElementById("checkOut");
+  const nights = document.getElementById("nights");
+
+  function calcNights(){
+    if(!checkIn || !checkOut || !nights) return;
+
+    if(!checkIn.value || !checkOut.value){
+      nights.value = "";
+      return;
+    }
+
+    const inDate = new Date(checkIn.value);
+    const outDate = new Date(checkOut.value);
+
+    const diff = outDate - inDate;
+    const days = Math.round(diff / (1000 * 60 * 60 * 24));
+
+    // Only show a valid number when check-out is after check-in
+    nights.value = (days > 0) ? String(days) : "";
+  }
+
+  // Optional: prevent selecting past dates
+  const today = new Date();
+  const yyyy = today.getFullYear();
+  const mm = String(today.getMonth() + 1).padStart(2, "0");
+  const dd = String(today.getDate()).padStart(2, "0");
+  const minDate = `${yyyy}-${mm}-${dd}`;
+
+  if(checkIn) checkIn.min = minDate;
+  if(checkOut) checkOut.min = minDate;
+
+  if(checkIn) checkIn.addEventListener("change", () => {
+    // Make checkout at least the checkin date
+    if(checkOut) checkOut.min = checkIn.value || minDate;
+    calcNights();
+  });
+
+  if(checkOut) checkOut.addEventListener("change", calcNights);
+ </script>
 
 </body>
 </html>

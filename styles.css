@@ -444,3 +444,8 @@ section + section{
 
 img{ max-width: 100%; height: auto; display: block; }
 p, a, span{ overflow-wrap: anywhere; }
+
+.contact-form input[readonly]{
+  background: #f6f6f6;
+  cursor: not-allowed;
+}

@@ -12,6 +12,9 @@ body{
   color: var(--text);
   background: var(--bg);
 }
+*{ box-sizing: border-box; }
+html, body{ overflow-x: hidden; }
+
 
 h1, h2, h3{
   font-family: "Playfair Display", serif;
@@ -364,3 +367,78 @@ section + section{
   font-size: 0.95rem;
   color: #444;
 }
+
+@media (max-width: 720px){
+  .navbar{
+    padding: 12px 10px;
+    gap: 10px;
+  }
+
+  .logo{
+    min-width: 0;
+    font-size: 0.95rem;
+  }
+
+  .navlinks{
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-right: 0;
+  }
+
+  .navlinks a{
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 720px){
+  section{ padding: 70px 0; }
+
+  .hero{
+    height: auto;
+    min-height: 82vh;
+    padding: 42px 0;
+  }
+
+  .hero-content{
+    width: calc(100% - 28px);
+    max-width: 520px;
+    padding: 22px 18px;
+  }
+
+  .hero h1{
+    font-size: 2.1rem;
+  }
+
+  .hero p{
+    font-size: 1rem;
+    margin: 12px 0 18px;
+  }
+
+  .greeting{
+    font-size: 22px; /* still readable on phone */
+    letter-spacing: 2px;
+  }
+}
+
+@media (max-width: 720px){
+  .room-grid,
+  .facilities-grid,
+  .gallery-grid,
+  .contact-grid{
+    grid-template-columns: 1fr !important;
+  }
+
+  .events-inner{
+    padding: 28px 18px;
+  }
+
+  .room-card,
+  .contact-details,
+  .contact-form{
+    padding: 22px 18px;
+  }
+}
+
+img{ max-width: 100%; height: auto; display: block; }
+p, a, span{ overflow-wrap: anywhere; }
